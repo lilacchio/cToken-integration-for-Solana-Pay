@@ -6,12 +6,20 @@ import { Keypair, Transaction, PublicKey, ComputeBudgetProgram, LAMPORTS_PER_SOL
 import { CompressedTokenProgram, createMint, mintTo, compress, transfer } from "@lightprotocol/compressed-token";
 import { getOrCreateAssociatedTokenAccount, getAccount, getAssociatedTokenAddress } from "@solana/spl-token";
 import path from "path";
+import cors from 'cors';
 
 // Load environment variables from .env file
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Add CORS middleware
+app.use(cors({
+  origin: '*',  // For hackathon, allow all origins (you can restrict this later)
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 
 // Add middleware to parse JSON request bodies
 app.use(express.json());

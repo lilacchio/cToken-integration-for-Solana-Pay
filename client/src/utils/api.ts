@@ -1,6 +1,8 @@
 import axios from 'axios';
+import { getBaseUrl } from './config';
 
-const API_BASE_URL = '/api/pop';
+// Get the base URL from config
+const API_BASE_URL = getBaseUrl();
 
 // Types for API requests and responses
 export interface CreateTokenRequest {
